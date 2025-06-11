@@ -249,4 +249,4 @@ def compute_move_to_center(
     relative_move_x_um = relative_move_x_pixels * pixel_size_x_nm / 1000
     relative_move_y_um = relative_move_y_pixels * pixel_size_y_nm / 1000
 
-    return relative_move_x_um, relative_move_y_um
+    return -relative_move_x_um, relative_move_y_um
