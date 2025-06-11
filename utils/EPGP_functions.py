@@ -8,7 +8,7 @@ from .etc_functions import load_image_and_metadata
 def pg_image_grab(
     step: Tuple[int, int],
     num_steps: Tuple[int, int],
-    identifier: str,
+    identifier: str = "image",
     offset: Tuple[int, int] = (0, 0),
     reference: Optional[str] = None,
     sample_average_exponent: int = 0,
@@ -159,13 +159,14 @@ def pg_image_grab(
     # Load the captured image
     image_path = os.path.join(os.environ.get("PG_IMAGES", "."), f"{identifier}.img")
     metadata_path = os.path.join(os.environ.get("PG_IMAGES", "."), f"{identifier}.txt")
+    identifier_path = os.path.join(os.environ.get("PG_IMAGES", "."), identifier)
     if not os.path.exists(image_path):
         raise FileNotFoundError(f"Image file {image_path} does not exist.")
     if not os.path.exists(metadata_path):
         raise FileNotFoundError(f"Metadata file {metadata_path} does not exist.")
 
     try:
-        image, metadata = load_image_and_metadata(identifier_path=identifier)
+        image, metadata = load_image_and_metadata(identifier_path=identifier_path)
     except Exception as e:
         print(f"Error loading image or metadata: {e}")
         raise
