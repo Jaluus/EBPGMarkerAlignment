@@ -9,7 +9,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 moves = []
 for i in range(10):
     ret, image, metadata = pg_image_grab(
-        step=(64, 64),
+        step=(32, 32),
         num_steps=(512, 512),
         sample_average_exponent=2,
         frame_average_exponent=2,
