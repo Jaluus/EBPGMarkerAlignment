@@ -228,11 +228,11 @@ def compute_move_to_center(
     Returns:
         tuple: Relative move in x and y directions in microns.
     """
-    pixel_size_um = metadata["Exel Size [nm]"] / 1000
+    pixel_size_nm = metadata["Exel Size [nm]"]
     image_size_pixels = metadata["Image Size [exels]"]
 
-    pixel_size_x_um = pixel_size_um[0]
-    pixel_size_y_um = pixel_size_um[1]
+    pixel_size_x_nm = pixel_size_nm[0]
+    pixel_size_y_nm = pixel_size_nm[1]
 
     image_size_x_pixels = image_size_pixels[0]
     image_size_y_pixels = image_size_pixels[1]
@@ -246,7 +246,7 @@ def compute_move_to_center(
     relative_move_x_pixels = center_x_pixels - marker_center_x_pixels
     relative_move_y_pixels = center_y_pixels - marker_center_y_pixels
 
-    relative_move_x_um = relative_move_x_pixels * pixel_size_x_um
-    relative_move_y_um = relative_move_y_pixels * pixel_size_y_um
+    relative_move_x_um = relative_move_x_pixels * pixel_size_x_nm / 1000
+    relative_move_y_um = relative_move_y_pixels * pixel_size_y_nm / 1000
 
     return relative_move_x_um, relative_move_y_um
