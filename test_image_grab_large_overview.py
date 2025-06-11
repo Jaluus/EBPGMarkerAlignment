@@ -4,6 +4,7 @@ from utils.etc_functions import to_int8
 from utils.EPGP_functions import pg_image_grab
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "output")
+os.makedirs(OUT_DIR, exist_ok=True)
 
 ret, image, metadata = pg_image_grab(
     step=(256, 256),

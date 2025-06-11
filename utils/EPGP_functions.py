@@ -126,10 +126,10 @@ def pg_image_grab(
 
     # Add options
     if sample_average_exponent > 0:
-        cmd.extend(["--sample_average_exponent", str(sample_average_exponent)])
+        cmd.append(f"--sample_average_exponent={sample_average_exponent}")
 
     if frame_average_exponent > 0:
-        cmd.extend(["--frame_average_exponent", str(frame_average_exponent)])
+        cmd.append(f"--frame_average_exponent={frame_average_exponent}")
 
     if sub:
         cmd.extend(["--sub", f"{sub[0]},{sub[1]}"])
@@ -204,7 +204,7 @@ def pg_move_position(
     cmd = ["pg", "move", "position"]
 
     if relative:
-        cmd.append("--rel")
+        cmd.append("--relative")
 
     cmd.append(f"{position[0]},{position[1]}")
 

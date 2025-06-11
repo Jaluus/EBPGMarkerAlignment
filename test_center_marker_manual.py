@@ -4,6 +4,7 @@ from utils.etc_functions import detect_marker_center, compute_move_to_center, to
 from utils.EPGP_functions import pg_image_grab
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "output")
+os.makedirs(OUT_DIR, exist_ok=True)
 
 ret, image, metadata = pg_image_grab(
     step=(64, 64),

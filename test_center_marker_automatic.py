@@ -4,8 +4,7 @@ from utils.etc_functions import detect_marker_center, compute_move_to_center, to
 from utils.EPGP_functions import pg_image_grab, pg_move_position
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "output", "center_marker_automatic")
-if not os.path.exists(OUT_DIR):
-    os.makedirs(OUT_DIR)
+os.makedirs(OUT_DIR, exist_ok=True)
 
 moves = []
 for i in range(10):
