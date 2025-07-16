@@ -25,7 +25,7 @@ for i in range(10):
 
     moves.append(relative_move_um)
     image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-    cv2.circle(image, tuple(marker_center), 5, (0, 0, 255), -1)
+    cv2.circle(image, tuple(map(int, marker_center)), 5, (0, 0, 255), -1)
     cv2.imwrite(os.path.join(OUT_DIR, f"{i}_image_with_marker.png"), to_int8(image))
 
 # Save the moves to a file
