@@ -11,5 +11,4 @@ python3 $SCRIPT_HOME/EBGPMarkerAlignment/alignment.py \
     --resolution-y 512 \
     --sample-average-exponent 2 \
     --frame-average-exponent 2 \
-    --iterations 5
-    
+    --iterations 3  
