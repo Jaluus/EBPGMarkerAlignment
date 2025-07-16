@@ -7,9 +7,9 @@ OUT_DIR = os.path.join(os.path.dirname(__file__), "output", "center_marker_autom
 os.makedirs(OUT_DIR, exist_ok=True)
 
 moves = []
-for i in range(10):
+for i in range(5):
     ret, image, metadata = pg_image_grab(
-        step=(32, 32),
+        step=(64, 64),
         num_steps=(512, 512),
         sample_average_exponent=2,
         frame_average_exponent=2,
