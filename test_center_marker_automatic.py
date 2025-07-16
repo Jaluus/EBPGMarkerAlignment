@@ -6,7 +6,7 @@ from utils.EPGP_functions import pg_image_grab, pg_move_position
 OUT_DIR = os.path.join(os.path.dirname(__file__), "output", "center_marker_automatic")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-STEP_SIZE = (64, 64)
+STEP_SIZE = (128, 128)
 RESOLUTION = (512, 512)
 SAMPLE_AVERAGE_EXPONENT = 2
 FRAME_AVERAGE_EXPONENT = 2
