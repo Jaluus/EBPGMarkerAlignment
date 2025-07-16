@@ -6,13 +6,18 @@ from utils.EPGP_functions import pg_image_grab, pg_move_position
 OUT_DIR = os.path.join(os.path.dirname(__file__), "output", "center_marker_automatic")
 os.makedirs(OUT_DIR, exist_ok=True)
 
+STEP_SIZE = (64, 64)
+RESOLUTION = (512, 512)
+SAMPLE_AVERAGE_EXPONENT = 2
+FRAME_AVERAGE_EXPONENT = 2
+
 moves = []
 for i in range(5):
     ret, image, metadata = pg_image_grab(
-        step=(64, 64),
-        num_steps=(512, 512),
-        sample_average_exponent=2,
-        frame_average_exponent=2,
+        step=STEP_SIZE,
+        num_steps=RESOLUTION,
+        sample_average_exponent=SAMPLE_AVERAGE_EXPONENT,
+        frame_average_exponent=FRAME_AVERAGE_EXPONENT,
     )
 
     marker_center = detect_marker_center(image)
