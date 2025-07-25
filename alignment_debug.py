@@ -116,7 +116,11 @@ def main():
         plt.savefig(os.path.join(OUT_DIR, f"{i}_histogram.png"))
         plt.close()
 
-        marker_candidates = detect_marker_candidates(image)
+        marker_candidates = detect_marker_candidates(
+            image,
+            gaussian_blur_ksize=15,
+            median_blur_ksize=5,
+        )
         image_with_candidates = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
         cv2.drawContours(image_with_candidates, marker_candidates, -1, (0, 255, 0), 2)
         cv2.imwrite(
