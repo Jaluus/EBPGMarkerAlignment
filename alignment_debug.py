@@ -109,7 +109,7 @@ def main():
         coeffs, _, _, _ = np.linalg.lstsq(A, test_image.ravel(), rcond=None)
         plane = (coeffs[0] * x + coeffs[1] * y + coeffs[2]).astype(test_image.dtype)
         test_image = test_image - plane
-        test_image = np.clip(test_image, 0, 255).astype(np.uint8)
+        image = np.clip(test_image, 0, 255).astype(np.uint8)
 
         # normalize image to 0-255 for visualization
         # plot the histogram of the image
