@@ -108,8 +108,7 @@ def main():
         plane = (coeffs[0] * x + coeffs[1] * y + coeffs[2]).astype(test_image.dtype)
         test_image = test_image - plane
 
-        image = np.clip(test_image, 0, 2**16 - 1).astype(np.uint16)
-        image = to_int8(image)
+        image = to_int8(test_image)
 
         image = (image - np.min(image)) / (np.max(image) - np.min(image)) * 255
 
