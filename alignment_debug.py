@@ -110,8 +110,6 @@ def main():
 
         image = to_int8(test_image)
 
-        image = (image - np.min(image)) / (np.max(image) - np.min(image)) * 255
-
         # normalize image to 0-255 for visualization
         # plot the histogram of the image
         # image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
