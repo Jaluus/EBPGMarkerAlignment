@@ -11,6 +11,7 @@ from utils.etc_functions import (
 )
 from utils.EPGP_functions import pg_image_grab, pg_move_position
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def parse_arguments():
@@ -96,6 +97,16 @@ def main():
             sample_average_exponent=SAMPLE_AVERAGE_EXPONENT,
             frame_average_exponent=FRAME_AVERAGE_EXPONENT,
         )
+
+        # normalize image to 0-255 for visualization
+        # plot the histogram of the image
+        # image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
+        plt.hist(image.ravel(), bins=256, range=[0, 256])
+        plt.title("Image Histogram")
+        plt.xlabel("Pixel Value")
+        plt.ylabel("Frequency")
+        plt.savefig(os.path.join(OUT_DIR, f"{i}_histogram.png"))
+        plt.close()
 
         marker_candidates = detect_marker_candidates(image)
         image_with_candidates = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
