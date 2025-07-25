@@ -11,10 +11,7 @@ def detect_marker_candidates(
     size_threshold: int = 1000,
 ) -> list[np.ndarray]:
 
-    if image.dtype != np.uint8:
-        image_int8 = to_int8(image)
-    else:
-        image_int8 = image
+    image_int8 = to_int8(image)
 
     image_processed = cv2.medianBlur(image_int8, median_blur_ksize)
     image_processed = cv2.GaussianBlur(
