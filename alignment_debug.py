@@ -101,6 +101,15 @@ def main():
 
         image = to_int8(image)
 
+        # Remove gradient intensity by fitting and subtracting a plane
+        h, w = image.shape
+        y, x = np.mgrid[0:h, 0:w]
+        A = np.column_stack([x.ravel(), y.ravel(), np.ones(x.size)])
+        coeffs, _, _, _ = np.linalg.lstsq(A, image.ravel(), rcond=None)
+        plane = (coeffs[0] * x + coeffs[1] * y + coeffs[2]).astype(image.dtype)
+        image = image - plane
+        image = np.clip(image, 0, 255).astype(np.uint8)
+
         # normalize image to 0-255 for visualization
         # plot the histogram of the image
         # image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
