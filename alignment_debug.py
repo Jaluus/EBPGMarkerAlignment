@@ -101,7 +101,12 @@ def main():
         # normalize image to 0-255 for visualization
         # plot the histogram of the image
         # image = cv2.normalize(image, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
-        plt.hist(image.ravel(), bins=256, range=[0, 256])
+        print("Image shape:", image.shape)
+        print("Image shape:", image.dtype)
+        print("Image min:", np.min(image))
+        print("Image max:", np.max(image))
+
+        plt.hist(image.ravel())
         plt.title("Image Histogram")
         plt.xlabel("Pixel Value")
         plt.ylabel("Frequency")
