@@ -7,6 +7,7 @@ from utils.etc_functions import (
     preprocess_candidate,
     compute_descriptors,
     compute_score,
+    to_int8,
     compute_candidate_center,
 )
 from utils.EPGP_functions import pg_image_grab, pg_move_position
@@ -98,7 +99,7 @@ def main():
             frame_average_exponent=FRAME_AVERAGE_EXPONENT,
         )
 
-        image = (image - np.min(image)) / (np.max(image) - np.min(image))
+        image = to_int8(image)
 
         # normalize image to 0-255 for visualization
         # plot the histogram of the image
